@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Like a Captain — A First-Time Manager's Handbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dk:#080F09; --dk2:#0D1B0F; --green:#1A4D2E; --gmid:#2D6A42; --glt:#4A9B63;
+  --gold:#C9A227; --glt2:#E8C35A; --cream:#F5F0E8; --white:#FEFDF8;
+  --muted:#8A9B82; --border:rgba(201,162,39,0.18); --dim:rgba(245,240,232,0.55);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dk);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden;min-height:100vh;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 3rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,15,9,0.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+  color:var(--gold);cursor:pointer;letter-spacing:.02em;white-space:nowrap;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links li a{display:block;padding:.4rem 1rem;text-decoration:none;color:var(--cream);
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;
+  transition:opacity .2s;cursor:pointer;}
+.nav-links li a:hover,.nav-links li a.active{opacity:1;color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--dk);border:none;padding:.55rem 1.3rem;
+  font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;
+  cursor:pointer;letter-spacing:.05em;text-transform:uppercase;
+  transition:background .2s,transform .15s;white-space:nowrap;}
+.nav-cta:hover{background:var(--glt2);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--cream);}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(8,15,9,.97);
+  border-bottom:1px solid var(--border);padding:1rem 2rem;z-index:199;flex-direction:column;gap:.5rem;}
+.mob-menu a{display:block;padding:.6rem 0;color:var(--cream);text-decoration:none;
+  font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;}
+.mob-menu.open{display:flex;}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:64px;min-height:100vh;}
+.page.active{display:block;}
+
+/* ── SECTION LABEL ── */
+.lbl{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1rem;display:flex;align-items:center;gap:.8rem;}
+.lbl::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+
+/* ── BUTTONS ── */
+.btn-gold{background:var(--gold);color:var(--dk);border:none;padding:.85rem 2rem;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;
+  letter-spacing:.05em;text-transform:uppercase;transition:all .2s;display:inline-block;
+  text-decoration:none;}
+.btn-gold:hover{background:var(--glt2);transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(245,240,232,.3);background:transparent;color:var(--cream);
+  padding:.85rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.9rem;cursor:pointer;
+  transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:rgba(245,240,232,.6);background:rgba(245,240,232,.05);}
+
+/* ══════════════════════════════════════════
+   PAGE: HOME
+══════════════════════════════════════════ */
+#page-home .hero{
+  min-height:calc(100vh - 64px);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:4rem 4rem 4rem;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 65% 90% at 70% 50%,rgba(26,77,46,.45) 0%,transparent 70%),
+             radial-gradient(ellipse 45% 45% at 18% 20%,rgba(201,162,39,.07) 0%,transparent 60%);
+}
+#page-home .hero::before{content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 90px,rgba(201,162,39,.03) 90px,rgba(201,162,39,.03) 91px);}
+.hero-text{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.28);
+  padding:.4rem 1rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.8rem;}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5rem);
+  line-height:1.06;font-weight:900;color:var(--white);margin-bottom:.2rem;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:1rem;font-weight:300;color:var(--dim);margin:1.4rem 0 2.2rem;line-height:1.75;max-width:440px;}
+.hero-stats{display:flex;gap:2.5rem;margin-bottom:2.2rem;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-l{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:.25rem;}
+.hero-acts{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
+
+/* 3-D BOOK */
+.hero-visual{position:relative;z-index:2;display:flex;align-items:center;
+  justify-content:center;padding:2rem;}
+.book-scene{perspective:1100px;width:260px;height:360px;position:relative;}
+.book-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+  transform:rotateY(-28deg) rotateX(6deg);
+  transition:transform .6s ease;
+  animation:bookFloat 7s ease-in-out infinite;}
+.book-scene:hover .book-3d{transform:rotateY(-14deg) rotateX(3deg) translateY(-10px);}
+@keyframes bookFloat{
+  0%,100%{transform:rotateY(-28deg) rotateX(6deg) translateY(0);}
+  50%{transform:rotateY(-24deg) rotateX(4deg) translateY(-14px);}
+}
+.book-front{position:absolute;width:260px;height:360px;
+  background:linear-gradient(155deg,#1E5C34 0%,#0D2B18 55%,#091F12 100%);
+  transform:translateZ(22px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:1.8rem 1.5rem;
+  border:1px solid rgba(201,162,39,.35);overflow:hidden;}
+.book-front::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent,transparent 38px,rgba(255,255,255,.014) 38px,rgba(255,255,255,.014) 39px);}
+.book-inner{position:relative;z-index:1;text-align:center;width:100%;}
+.book-icon{font-size:2.2rem;margin-bottom:.8rem;filter:drop-shadow(0 0 8px rgba(201,162,39,.4));}
+.book-gl{width:55px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto .8rem;}
+.b-lead{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:.05em;}
+.b-like{font-family:'Playfair Display',serif;font-style:italic;font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1;display:block;}
+.b-cap{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--white);letter-spacing:.05em;text-transform:uppercase;}
+.b-sub{font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(201,162,39,.65);margin:.7rem 0;line-height:1.6;}
+.b-auth{font-size:.7rem;color:rgba(245,240,232,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;}
+.book-price{position:absolute;top:.9rem;right:.9rem;background:var(--gold);color:var(--dk);
+  font-size:.65rem;font-weight:700;padding:.25rem .55rem;letter-spacing:.04em;}
+.book-spine{position:absolute;width:44px;height:360px;
+  background:linear-gradient(90deg,#060e08 0%,#0D2B18 100%);
+  transform:rotateY(90deg) translateZ(22px) translateX(-22px);
+  transform-origin:left center;display:flex;align-items:center;justify-content:center;
+  border-right:1px solid rgba(201,162,39,.25);}
+.spine-t{font-family:'Playfair Display',serif;font-size:.6rem;font-weight:700;
+  color:var(--gold);letter-spacing:.15em;writing-mode:vertical-rl;
+  text-orientation:mixed;transform:rotate(180deg);text-transform:uppercase;}
+.book-back{position:absolute;top:0;left:0;width:260px;height:360px;
+  background:linear-gradient(135deg,#060e08,#0D1B0F);
+  transform:translateZ(-22px) rotateY(180deg);}
+.fl-badge{position:absolute;background:rgba(8,15,9,.92);border:1px solid rgba(201,162,39,.28);
+  padding:.55rem .9rem;animation:flBadge 4.5s ease-in-out infinite;}
+.fl-badge strong{display:block;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);}
+.fl-badge span{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.fl1{top:5%;left:-16%;animation-delay:0s;}
+.fl2{bottom:15%;right:-14%;animation-delay:2.2s;}
+@keyframes flBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+
+/* HOME other sections */
+.home-band{padding:5rem 4rem;background:linear-gradient(180deg,var(--dk) 0%,#0A1A0C 100%);}
+.home-band h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:3rem;}
+.home-band h2 em{color:var(--gold);font-style:italic;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.12);}
+.feat-card{background:var(--dk);padding:2.2rem 1.8rem;position:relative;overflow:hidden;transition:background .3s;cursor:default;}
+.feat-card:hover{background:rgba(26,77,46,.2);}
+.feat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.feat-card:hover::after{opacity:1;}
+.feat-icon{font-size:1.8rem;margin-bottom:1rem;}
+.feat-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.6rem;}
+.feat-text{font-size:.85rem;line-height:1.7;color:rgba(245,240,232,.5);}
+
+.home-cta-band{padding:5rem 4rem;background:linear-gradient(135deg,#1A4D2E 0%,#0D2B18 100%);
+  text-align:center;position:relative;overflow:hidden;}
+.home-cta-band::before{content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 28px,rgba(201,162,39,.025) 28px,rgba(201,162,39,.025) 29px);}
+.home-cta-band>*{position:relative;z-index:1;}
+.home-cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.big-price{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;color:var(--gold);line-height:1;margin:.8rem 0;}
+.big-price sup{font-size:1.8rem;vertical-align:super;}
+.home-cta-band p{font-size:.95rem;color:var(--dim);margin-bottom:2rem;line-height:1.7;}
+
+/* ══════════════════════════════════════════
+   PAGE: FOR YOU
+══════════════════════════════════════════ */
+#page-foryou{background:linear-gradient(180deg,var(--dk) 0%,#0A1A0C 100%);}
+.fy-hero{padding:5rem 4rem 3rem;}
+.fy-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:var(--white);margin-bottom:1rem;}
+.fy-hero h1 em{color:var(--gold);font-style:italic;}
+.fy-hero p{font-size:1rem;color:var(--dim);max-width:600px;line-height:1.75;margin-bottom:3rem;}
+.fy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.12);margin:0 4rem;}
+.fy-card{background:var(--dk);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s;}
+.fy-card:hover{background:rgba(26,77,46,.22);}
+.fy-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.fy-card:hover::after{opacity:1;}
+.fy-icon{font-size:2.2rem;margin-bottom:1.2rem;}
+.fy-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.7rem;}
+.fy-text{font-size:.87rem;line-height:1.72;color:rgba(245,240,232,.52);}
+
+.quiz-band{padding:5rem 4rem;background:#080F09;}
+.quiz-band h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.quiz-band>p{font-size:.9rem;color:var(--dim);margin-bottom:2rem;}
+.quiz-box{max-width:620px;border:1px solid var(--border);background:rgba(26,77,46,.1);}
+.quiz-q{padding:1.8rem 2rem;border-bottom:1px solid var(--border);}
+.quiz-q p{font-size:.95rem;color:var(--cream);margin-bottom:1rem;line-height:1.6;}
+.quiz-opts{display:flex;flex-direction:column;gap:.6rem;}
+.quiz-opt{background:rgba(245,240,232,.04);border:1px solid rgba(245,240,232,.1);
+  padding:.7rem 1rem;font-size:.85rem;color:var(--cream);cursor:pointer;
+  text-align:left;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.quiz-opt:hover{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.3);color:var(--gold);}
+.quiz-opt.selected{background:rgba(201,162,39,.15);border-color:var(--gold);color:var(--gold);}
+.quiz-nav{padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.quiz-prog{font-size:.78rem;color:var(--muted);letter-spacing:.08em;}
+.quiz-result{padding:2rem;display:none;}
+.quiz-result.show{display:block;}
+.quiz-result h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:.6rem;}
+.quiz-result p{font-size:.9rem;color:var(--dim);line-height:1.7;}
+
+/* ══════════════════════════════════════════
+   PAGE: CHAPTERS
+══════════════════════════════════════════ */
+#page-chapters{background:#080F09;}
+.ch-hero{padding:5rem 4rem 3rem;}
+.ch-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.ch-hero h1 em{color:var(--gold);font-style:italic;}
+.ch-intro{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3rem;}
+.ch-desc{font-size:.95rem;line-height:1.8;color:var(--dim);border-left:2px solid var(--gold);padding-left:1.4rem;}
+.section-tabs{display:flex;gap:0;flex-wrap:wrap;margin:0 4rem 0;}
+.s-tab{padding:.6rem 1.3rem;border:1px solid var(--border);border-right:none;
+  font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(201,162,39,.6);
+  cursor:pointer;transition:all .2s;background:transparent;}
+.s-tab:last-child{border-right:1px solid var(--border);}
+.s-tab.active,.s-tab:hover{background:rgba(201,162,39,.08);color:var(--gold);border-color:rgba(201,162,39,.4);}
+.ch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.06);margin:1.5rem 4rem;}
+.ch-cell{background:#080F09;padding:1.3rem .9rem;text-align:center;position:relative;
+  cursor:pointer;transition:background .2s;}
+.ch-cell:hover,.ch-cell.ch-active{background:rgba(26,77,46,.3);}
+.ch-cell.ch-active{border:1px solid rgba(201,162,39,.3);}
+.ch-num{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;
+  color:rgba(201,162,39,.2);display:block;line-height:1;}
+.ch-cell.ch-active .ch-num{color:var(--gold);}
+.ch-name{font-size:.68rem;color:rgba(245,240,232,.4);line-height:1.4;margin-top:.35rem;
+  text-transform:uppercase;letter-spacing:.05em;}
+.ch-cell.ch-active .ch-name{color:var(--cream);}
+.ch-detail{margin:0 4rem 3rem;padding:2rem;border:1px solid var(--border);
+  background:rgba(26,77,46,.08);display:none;}
+.ch-detail.show{display:block;}
+.ch-det-num{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.4rem;}
+.ch-det-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:1rem;}
+.ch-det-body{font-size:.9rem;line-height:1.8;color:var(--dim);margin-bottom:1.2rem;}
+.ch-det-action{display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;
+  background:rgba(201,162,39,.07);border-left:3px solid var(--gold);}
+.ch-det-action strong{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:.3rem;}
+.ch-det-action p{font-size:.88rem;color:var(--cream);line-height:1.6;}
+.sec-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 4rem 3rem;}
+.sec-pill{border:1px solid rgba(201,162,39,.18);padding:.5rem .9rem;
+  font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(201,162,39,.65);transition:all .2s;}
+.sec-pill:hover{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.38);color:var(--gold);}
+
+/* ══════════════════════════════════════════
+   PAGE: MENTOR
+══════════════════════════════════════════ */
+#page-mentor{background:linear-gradient(135deg,#0D2B18 0%,#0A1A0C 50%,var(--dk) 100%);}
+.mentor-hero{padding:5rem 4rem 2rem;}
+.mentor-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-bottom:.8rem;}
+.mentor-hero h1 em{color:var(--gold);font-style:italic;}
+.mentor-hero p{font-size:.95rem;color:var(--dim);line-height:1.75;max-width:560px;}
+.mentor-layout{display:grid;grid-template-columns:280px 1fr;gap:2rem;padding:2rem 4rem 5rem;align-items:start;}
+.mentor-sidebar{display:flex;flex-direction:column;gap:1rem;}
+.mentor-sidebar h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);margin-bottom:.3rem;}
+.quick-q{background:rgba(26,77,46,.15);border:1px solid var(--border);padding:.7rem 1rem;
+  font-size:.82rem;color:var(--cream);cursor:pointer;transition:all .2s;text-align:left;
+  font-family:'DM Sans',sans-serif;line-height:1.4;}
+.quick-q:hover{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.3);color:var(--gold);}
+.mentor-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
+.m-tag{font-size:.68rem;padding:.3rem .6rem;border:1px solid rgba(201,162,39,.2);
+  color:rgba(201,162,39,.65);cursor:pointer;transition:all .2s;}
+.m-tag:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.4);color:var(--gold);}
+.chat-wrap{background:rgba(8,15,9,.8);border:1px solid var(--border);display:flex;flex-direction:column;height:580px;}
+.chat-hdr{background:rgba(26,77,46,.28);padding:.9rem 1.4rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.7rem;font-size:.78rem;color:var(--gold);
+  letter-spacing:.1em;text-transform:uppercase;}
+.chat-dot{width:7px;height:7px;border-radius:50%;background:var(--glt);flex-shrink:0;}
+.chat-dot.typing{animation:blink 1s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.chat-msgs{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;}
+.chat-msgs::-webkit-scrollbar{width:4px;}
+.chat-msgs::-webkit-scrollbar-track{background:transparent;}
+.chat-msgs::-webkit-scrollbar-thumb{background:rgba(201,162,39,.2);}
+.msg{max-width:82%;font-size:.88rem;line-height:1.65;}
+.msg-bot{align-self:flex-start;}
+.msg-bot .mb{background:rgba(26,77,46,.25);border:1px solid rgba(201,162,39,.12);padding:.8rem 1rem;}
+.msg-bot .mb strong{color:var(--gold);display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem;}
+.msg-user{align-self:flex-end;}
+.msg-user .mu{background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.2);
+  padding:.8rem 1rem;color:var(--cream);}
+.typing-ind{display:none;align-self:flex-start;}
+.typing-ind.show{display:flex;}
+.typing-ind .mb{display:flex;align-items:center;gap:4px;padding:.7rem 1rem;}
+.t-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.4;animation:tdot 1.2s ease-in-out infinite;}
+.t-dot:nth-child(2){animation-delay:.2s;}
+.t-dot:nth-child(3){animation-delay:.4s;}
+@keyframes tdot{0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-5px);}}
+.chat-input-row{padding:1rem 1.2rem;border-top:1px solid var(--border);display:flex;gap:.8rem;}
+.chat-in{flex:1;background:rgba(245,240,232,.05);border:1px solid rgba(245,240,232,.14);
+  color:var(--cream);padding:.65rem .9rem;font-family:'DM Sans',sans-serif;
+  font-size:.87rem;outline:none;transition:border-color .2s;resize:none;height:42px;}
+.chat-in::placeholder{color:rgba(245,240,232,.25);}
+.chat-in:focus{border-color:rgba(201,162,39,.4);}
+.chat-send{background:var(--gold);color:var(--dk);border:none;padding:.65rem 1.3rem;
+  font-family:'DM Sans',sans-serif;font-size:.87rem;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;}
+.chat-send:hover{background:var(--glt2);}
+
+/* ══════════════════════════════════════════
+   PAGE: BLOG
+══════════════════════════════════════════ */
+#page-blog{background:var(--dk);}
+.blog-hero{padding:5rem 4rem 3rem;}
+.blog-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-bottom:1rem;}
+.blog-hero h1 em{color:var(--gold);font-style:italic;}
+.blog-hero p{font-size:.95rem;color:var(--dim);line-height:1.75;max-width:560px;margin-bottom:2rem;}
+.blog-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.b-flt{font-size:.72rem;padding:.4rem .9rem;border:1px solid var(--border);color:var(--muted);
+  cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.08em;}
+.b-flt.active,.b-flt:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.3);color:var(--gold);}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.1);margin:0 4rem 5rem;}
+.blog-card{background:var(--dk);padding:2rem 1.8rem;cursor:pointer;transition:background .3s;position:relative;}
+.blog-card:hover{background:rgba(26,77,46,.18);}
+.blog-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.8rem;}
+.blog-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.3;}
+.blog-excerpt{font-size:.83rem;line-height:1.65;color:rgba(245,240,232,.48);margin-bottom:1.2rem;}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted);}
+.blog-read{color:var(--gold);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;}
+.blog-post{display:none;padding:5rem 4rem;}
+.blog-post.show{display:block;}
+.blog-post-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--gold);font-size:.8rem;
+  text-transform:uppercase;letter-spacing:.1em;cursor:pointer;margin-bottom:2rem;
+  background:none;border:none;font-family:'DM Sans',sans-serif;}
+.blog-post-back:hover{text-decoration:underline;}
+.blog-post h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.15;}
+.blog-post-meta{font-size:.78rem;color:var(--muted);margin-bottom:2.5rem;letter-spacing:.05em;}
+.blog-post-body{max-width:700px;}
+.blog-post-body p{font-size:.95rem;line-height:1.85;color:var(--dim);margin-bottom:1.3rem;}
+.blog-post-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--white);margin:2rem 0 .8rem;}
+.blog-post-body blockquote{border-left:3px solid var(--gold);padding-left:1.2rem;margin:1.5rem 0;font-size:1rem;font-style:italic;color:var(--cream);}
+
+/* ══════════════════════════════════════════
+   PAGE: ABOUT
+══════════════════════════════════════════ */
+#page-about{background:linear-gradient(180deg,var(--dk) 0%,#0A1A0C 100%);}
+.about-hero{padding:5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.about-text h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;color:var(--white);margin-bottom:1rem;}
+.about-text h1 em{color:var(--gold);font-style:italic;}
+.about-text p{font-size:.93rem;line-height:1.8;color:var(--dim);margin-bottom:1rem;}
+.about-text blockquote{border-left:3px solid var(--gold);padding-left:1.2rem;font-size:1.05rem;font-style:italic;color:var(--cream);line-height:1.65;margin:1.5rem 0;}
+.about-img-wrap{position:relative;}
+.about-card{background:linear-gradient(135deg,#1A4D2E,#0D2B18);
+  border:1px solid rgba(201,162,39,.25);padding:3rem 2.5rem;text-align:center;}
+.about-avatar{width:100px;height:100px;border-radius:50%;background:var(--green);
+  margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold);
+  border:3px solid rgba(201,162,39,.3);}
+.about-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.3rem;}
+.about-role{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:1.2rem;}
+.about-social{display:flex;justify-content:center;gap:.8rem;margin-top:1.5rem;}
+.soc-btn{border:1px solid var(--border);padding:.5rem .9rem;font-size:.75rem;color:var(--muted);
+  cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.soc-btn:hover{border-color:rgba(201,162,39,.4);color:var(--gold);}
+.about-facts{padding:3rem 4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.1);margin:0 4rem 5rem;}
+.fact{background:var(--dk);padding:2rem 1.5rem;text-align:center;}
+.fact-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold);}
+.fact-l{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:.4rem;}
+.philosophy{padding:0 4rem 5rem;}
+.philosophy h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white);margin-bottom:2rem;}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.phil-item{padding:1.8rem;border:1px solid var(--border);transition:border-color .3s;}
+.phil-item:hover{border-color:rgba(201,162,39,.35);}
+.phil-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:rgba(201,162,39,.2);margin-bottom:.6rem;}
+.phil-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.phil-text{font-size:.84rem;line-height:1.7;color:var(--dim);}
+
+/* ══════════════════════════════════════════
+   PAGE: ORDER
+══════════════════════════════════════════ */
+#page-order{background:linear-gradient(135deg,#1A4D2E 0%,#0D2B18 50%,var(--dk) 100%);
+  position:relative;overflow:hidden;}
+#page-order::before{content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(201,162,39,.025) 30px,rgba(201,162,39,.025) 31px);}
+.order-wrap{position:relative;z-index:1;padding:5rem 4rem;}
+.order-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.order-left h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.order-left h1 em{color:var(--gold);font-style:italic;}
+.order-price-big{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--gold);line-height:1;margin:1rem 0;}
+.order-price-big sup{font-size:2.2rem;vertical-align:super;}
+.order-left p{font-size:.9rem;color:var(--dim);line-height:1.75;margin-bottom:1.5rem;}
+.order-perks{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;}
+.perk{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--cream);}
+.perk-icon{font-size:1rem;flex-shrink:0;}
+.order-box{background:rgba(8,15,9,.7);border:1px solid rgba(201,162,39,.25);padding:2.5rem;}
+.order-box h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;}
+.order-fields{display:flex;flex-direction:column;gap:.9rem;margin-bottom:1.2rem;}
+.o-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.3rem;}
+.o-input{width:100%;background:rgba(245,240,232,.05);border:1px solid rgba(201,162,39,.22);
+  color:var(--cream);padding:.8rem 1.1rem;font-family:'DM Sans',sans-serif;
+  font-size:.9rem;outline:none;transition:border-color .2s;}
+.o-input::placeholder{color:rgba(245,240,232,.28);}
+.o-input:focus{border-color:var(--gold);}
+.qty-row{display:flex;align-items:center;gap:.8rem;}
+.qty-btn{width:36px;height:36px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.25);
+  color:var(--gold);font-size:1.2rem;cursor:pointer;transition:all .2s;}
+.qty-btn:hover{background:rgba(201,162,39,.2);}
+.qty-val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--white);min-width:30px;text-align:center;}
+.order-summary{background:rgba(26,77,46,.15);border:1px solid var(--border);padding:1rem 1.2rem;margin-bottom:1.2rem;}
+.sum-row{display:flex;justify-content:space-between;font-size:.85rem;color:var(--dim);margin-bottom:.4rem;}
+.sum-row.total{color:var(--cream);font-weight:500;border-top:1px solid var(--border);padding-top:.6rem;margin-top:.4rem;font-size:.95rem;}
+.sum-total-val{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
+.btn-wa{width:100%;background:var(--gold);color:var(--dk);border:none;padding:1rem;
+  font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;
+  letter-spacing:.06em;text-transform:uppercase;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.8rem;}
+.btn-wa:hover{background:var(--glt2);transform:translateY(-2px);}
+.order-note-sm{font-size:.75rem;color:rgba(245,240,232,.3);text-align:center;letter-spacing:.04em;}
+.order-success{display:none;text-align:center;padding:2rem;}
+.order-success.show{display:block;}
+.order-success h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);margin-bottom:.6rem;}
+.order-success p{font-size:.9rem;color:var(--dim);line-height:1.7;}
+.testimonials{padding:0 4rem 5rem;}
+.testimonials h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white);margin-bottom:2rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.1);}
+.testi{background:rgba(8,15,9,.7);padding:2rem 1.8rem;}
+.testi-quote{font-size:.9rem;font-style:italic;color:var(--dim);line-height:1.75;margin-bottom:1.2rem;}
+.testi-name{font-size:.78rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;}
+.testi-role{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+
+/* ── STICKY BTN ── */
+.sticky-wa{position:fixed;bottom:1.5rem;right:1.5rem;z-index:150;
+  background:var(--gold);color:var(--dk);border:none;padding:.8rem 1.6rem;
+  font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;
+  letter-spacing:.05em;box-shadow:0 4px 20px rgba(201,162,39,.32);
+  transition:all .2s;animation:stickyPulse 3s ease-in-out infinite;}
+.sticky-wa:hover{background:var(--glt2);transform:translateY(-2px);box-shadow:0 6px 28px rgba(201,162,39,.45);}
+@keyframes stickyPulse{0%,100%{box-shadow:0 4px 20px rgba(201,162,39,.32);}50%{box-shadow:0 4px 28px rgba(201,162,39,.52);}}
+
+/* ── FOOTER ── */
+footer{padding:2rem 4rem;border-top:1px solid var(--border);background:#060e08;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.foot-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:.95rem;}
+.foot-links{display:flex;gap:1.5rem;}
+.foot-links a{font-size:.75rem;color:var(--muted);text-decoration:none;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.08em;transition:color .2s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:.75rem;color:rgba(245,240,232,.25);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 1.5rem;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  #page-home .hero,.about-hero,.order-layout,.mentor-layout{grid-template-columns:1fr;}
+  .hero-visual,.about-img-wrap{display:none;}
+  .fy-grid,.blog-grid,.testi-grid,.feature-grid,.ch-grid{grid-template-columns:repeat(2,1fr);}
+  .phil-grid,.about-facts{grid-template-columns:repeat(2,1fr);}
+  section,.home-band,.home-cta-band,.fy-hero,.ch-hero,.mentor-hero,.mentor-layout,
+  .blog-hero,.blog-grid,.about-hero,.about-facts,.philosophy,.testimonials,.order-wrap,
+  .section-tabs,.sec-pills,.ch-grid,.ch-detail{padding-left:1.5rem!important;padding-right:1.5rem!important;margin-left:0!important;margin-right:0!important;}
+  .ch-intro{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem;}
+}
+@media(max-width:600px){
+  .fy-grid,.blog-grid,.testi-grid,.feature-grid,.ch-grid,.phil-grid,.about-facts{grid-template-columns:1fr;}
+}
+
+/* ── ANIMATE ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+.fade-up.vis{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goPage('home')">🏏 Lead Like a Captain</div>
+  <ul class="nav-links">
+    <li><a onclick="goPage('foryou')" class="nav-a" data-p="foryou">For You?</a></li>
+    <li><a onclick="goPage('chapters')" class="nav-a" data-p="chapters">Chapters</a></li>
+    <li><a onclick="goPage('mentor')" class="nav-a" data-p="mentor">Mentor</a></li>
+    <li><a onclick="goPage('blog')" class="nav-a" data-p="blog">Blog</a></li>
+    <li><a onclick="goPage('about')" class="nav-a" data-p="about">About</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goPage('order')">Order — ₹149</button>
+  <div class="hamburger" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a onclick="goPage('home');toggleMob()">🏠 Home</a>
+  <a onclick="goPage('foryou');toggleMob()">🙋 For You?</a>
+  <a onclick="goPage('chapters');toggleMob()">📖 Chapters</a>
+  <a onclick="goPage('mentor');toggleMob()">🏏 Ask the Mentor</a>
+  <a onclick="goPage('blog');toggleMob()">✍️ Blog</a>
+  <a onclick="goPage('about');toggleMob()">👤 About</a>
+  <a onclick="goPage('order');toggleMob()">🛒 Order — ₹149</a>
+</div>
+
+<!-- ════════════════════ PAGE: HOME ════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-text fade-up">
+      <div class="hero-badge">🏏 For First-Time Managers &amp; Students</div>
+      <h1 class="hero-h1">Lead Like<br><em>a Captain.</em></h1>
+      <p class="hero-sub">You got promoted. Now what? This is the guide every new manager wishes someone had given them on Day 1. Short chapters. Real lessons. One action per week.</p>
+      <div class="hero-stats">
+        <div><div class="stat-n">27</div><div class="stat-l">Chapters</div></div>
+        <div><div class="stat-n">5</div><div class="stat-l">Sections</div></div>
+        <div><div class="stat-n">₹149</div><div class="stat-l">Price</div></div>
+        <div><div class="stat-n">1</div><div class="stat-l">Action/chapter</div></div>
+      </div>
+      <div class="hero-acts">
+        <button class="btn-gold" onclick="goPage('order')">💬 Order Now — ₹149</button>
+        <button class="btn-outline" onclick="goPage('chapters')">What's Inside ↓</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="fl-badge fl1 fade-up"><strong>27</strong><span>Lessons</span></div>
+      <div class="book-scene">
+        <div class="book-3d">
+          <div class="book-spine"><span class="spine-t">Lead Like a Captain</span></div>
+          <div class="book-front">
+            <div class="book-price">₹149</div>
+            <div class="book-inner">
+              <div class="book-icon">🏏</div>
+              <div class="book-gl"></div>
+              <div class="b-lead">Lead</div>
+              <div class="b-like">Like</div>
+              <div class="b-cap">a Captain</div>
+              <div class="b-sub">A First-Time Manager's<br>Handbook Inspired by Cricket</div>
+              <div class="book-gl"></div>
+              <div class="b-auth">Sanjay Samuel</div>
+            </div>
+          </div>
+          <div class="book-back"></div>
+        </div>
+      </div>
+      <div class="fl-badge fl2 fade-up"><strong>₹149</strong><span>Only</span></div>
+    </div>
+  </div>
+
+  <div class="home-band">
+    <div class="lbl">Why this book?</div>
+    <h2>Cricket teaches us everything about <em>leadership.</em></h2>
+    <div class="feature-grid fade-up">
+      <div class="feat-card"><div class="feat-icon">🎯</div><div class="feat-title">One Action Per Chapter</div><div class="feat-text">Each of the 27 chapters ends with a single, concrete action you can take this week. No theory without practice.</div></div>
+      <div class="feat-card"><div class="feat-icon">⏱️</div><div class="feat-title">Short Chapters</div><div class="feat-text">Every chapter can be read in under 10 minutes. Built for busy managers who need insights, not lectures.</div></div>
+      <div class="feat-card"><div class="feat-icon">🏏</div><div class="feat-title">Cricket-Inspired</div><div class="feat-text">Dhoni's calm, Ganguly's fire, Ponting's grit — each leadership principle drawn from the greatest captains ever.</div></div>
+      <div class="feat-card"><div class="feat-icon">🚀</div><div class="feat-title">For Day 1 Managers</div><div class="feat-text">Designed specifically for people who just got promoted and have no idea where to start. This is that guide.</div></div>
+      <div class="feat-card"><div class="feat-icon">📐</div><div class="feat-title">5 Clear Sections</div><div class="feat-text">Self-Awareness, Team Building, Communication, Decision Making, and Leading to Win. A complete framework.</div></div>
+      <div class="feat-card"><div class="feat-icon">💡</div><div class="feat-title">Timeless Principles</div><div class="feat-text">The best captains think decades ahead. These principles work in tech startups, factories, classrooms and boardrooms.</div></div>
+    </div>
+  </div>
+
+  <div class="home-cta-band fade-up">
+    <div class="lbl" style="justify-content:center;">Get your copy</div>
+    <h2>Less than a cup of coffee. ☕</h2>
+    <div class="big-price"><sup>₹</sup>149</div>
+    <p>27 chapters · 27 actions · One handbook that could change how you lead — forever.<br>Direct delivery. Get it today via WhatsApp.</p>
+    <button class="btn-gold" onclick="goPage('order')">💬 Order on WhatsApp</button>
+  </div>
+
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links">
+      <a onclick="goPage('foryou')">For You?</a>
+      <a onclick="goPage('chapters')">Chapters</a>
+      <a onclick="goPage('mentor')">Mentor</a>
+      <a onclick="goPage('blog')">Blog</a>
+      <a onclick="goPage('about')">About</a>
+      <a onclick="goPage('order')">Order</a>
+    </div>
+    <div class="foot-copy">© 2024 Sanjay Samuel · ISBN 9789374062784</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: FOR YOU ════════════════════ -->
+<div class="page" id="page-foryou">
+  <div class="fy-hero fade-up">
+    <div class="lbl">Who should read this?</div>
+    <h1>Is This Book <em>For You?</em></h1>
+    <p>Lead Like a Captain is written for anyone stepping into leadership for the first time — or anyone who wants to lead better. See if any of these sound like you.</p>
+  </div>
+  <div class="fy-grid fade-up">
+    <div class="fy-card"><div class="fy-icon">🚀</div><div class="fy-title">Just Got Promoted</div><div class="fy-text">You were great at your job — now you have to lead a team. This book bridges that gap with practical, action-oriented wisdom from cricket's greatest captains.</div></div>
+    <div class="fy-card"><div class="fy-icon">🎓</div><div class="fy-title">Fresh Graduate</div><div class="fy-text">Starting your career and want to stand out? Learn the leadership mindset before your peers do. Arrive at your first day already thinking like a captain.</div></div>
+    <div class="fy-card"><div class="fy-icon">🏏</div><div class="fy-title">Cricket Enthusiast</div><div class="fy-text">If you understand how great captains lead — Dhoni's calm, Ganguly's fire — you already understand great management. This book is the bridge.</div></div>
+    <div class="fy-card"><div class="fy-icon">⏱️</div><div class="fy-title">Busy Professional</div><div class="fy-text">Short chapters. 10 minutes each. One action per chapter. Leadership wisdom that fits your schedule without demanding it. Read one chapter per week.</div></div>
+    <div class="fy-card"><div class="fy-icon">🧭</div><div class="fy-title">Feeling Overwhelmed</div><div class="fy-text">Leading people is harder than it looks. This is a handbook, not a lecture — real guidance, real frameworks, real results for managers who feel lost.</div></div>
+    <div class="fy-card"><div class="fy-icon">💡</div><div class="fy-title">Lifelong Learner</div><div class="fy-text">Even seasoned managers find fresh perspective here. The principles of cricket captaincy offer timeless wisdom that applies in any leadership setting.</div></div>
+  </div>
+
+  <div class="quiz-band fade-up">
+    <div class="lbl">Quick quiz</div>
+    <h2>Not sure? Take the 4-question quiz.</h2>
+    <p>Answer 4 quick questions and find out if this book is right for you.</p>
+    <div class="quiz-box" id="quizBox">
+      <div class="quiz-q" id="quizQ">
+        <p id="quizQtext"></p>
+        <div class="quiz-opts" id="quizOpts"></div>
+      </div>
+      <div class="quiz-nav">
+        <span class="quiz-prog" id="quizProg">Question 1 of 4</span>
+        <button class="btn-gold" style="padding:.5rem 1.2rem;font-size:.8rem;" onclick="nextQ()">Next →</button>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <h3 id="quizResultTitle"></h3>
+        <p id="quizResultText"></p>
+        <button class="btn-gold" style="margin-top:1.2rem;" onclick="goPage('order')">Order Your Copy — ₹149</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links">
+      <a onclick="goPage('home')">Home</a><a onclick="goPage('chapters')">Chapters</a>
+      <a onclick="goPage('order')">Order</a>
+    </div>
+    <div class="foot-copy">© 2024 Sanjay Samuel</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: CHAPTERS ════════════════════ -->
+<div class="page" id="page-chapters">
+  <div class="ch-hero fade-up">
+    <div class="lbl">Inside the book</div>
+    <h1>27 Chapters. <em>27 Actions.</em></h1>
+    <div class="ch-intro">
+      <div></div>
+      <div class="ch-desc">Every chapter is inspired by a real moment from cricket captaincy — and ends with one concrete action you can take this week. No theory without practice. Click any chapter to preview it.</div>
+    </div>
+  </div>
+  <div class="section-tabs" id="secTabs">
+    <button class="s-tab active" onclick="filterSec('all',this)">All 27</button>
+    <button class="s-tab" onclick="filterSec('1',this)">Self Awareness</button>
+    <button class="s-tab" onclick="filterSec('2',this)">Team Building</button>
+    <button class="s-tab" onclick="filterSec('3',this)">Communication</button>
+    <button class="s-tab" onclick="filterSec('4',this)">Decision Making</button>
+    <button class="s-tab" onclick="filterSec('5',this)">Leading to Win</button>
+  </div>
+  <div class="ch-grid" id="chGrid"></div>
+  <div class="ch-detail fade-up" id="chDetail"></div>
+  <div class="sec-pills">
+    <div class="sec-pill">🧠 Self Awareness (Ch 1–6)</div>
+    <div class="sec-pill">👥 Team Building (Ch 7–12)</div>
+    <div class="sec-pill">🗣️ Communication (Ch 13–18)</div>
+    <div class="sec-pill">⚡ Decision Making (Ch 19–23)</div>
+    <div class="sec-pill">🏆 Leading to Win (Ch 24–27)</div>
+  </div>
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links"><a onclick="goPage('home')">Home</a><a onclick="goPage('order')">Order</a></div>
+    <div class="foot-copy">© 2024 Sanjay Samuel</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: MENTOR ════════════════════ -->
+<div class="page" id="page-mentor">
+  <div class="mentor-hero fade-up">
+    <div class="lbl">Your 24/7 guide</div>
+    <h1>Ask the <em>Captain.</em></h1>
+    <p>Get cricket-inspired leadership advice for any management challenge you're facing. The principles from the book — applied to your situation, right now.</p>
+  </div>
+  <div class="mentor-layout">
+    <div class="mentor-sidebar fade-up">
+      <h3>Quick Questions</h3>
+      <button class="quick-q" onclick="sendQuick('My team is not listening to me. What should I do?')">My team isn't listening to me.</button>
+      <button class="quick-q" onclick="sendQuick('How do I handle a star performer who is being difficult?')">A star player is being difficult.</button>
+      <button class="quick-q" onclick="sendQuick('I just got promoted and I feel overwhelmed. Help.')">Just promoted — feeling overwhelmed.</button>
+      <button class="quick-q" onclick="sendQuick('How do I give tough feedback without damaging relationships?')">Giving tough feedback to someone.</button>
+      <button class="quick-q" onclick="sendQuick('My team lost confidence after a big failure. How to rebuild?')">Team lost confidence after a failure.</button>
+      <div style="margin-top:.8rem;">
+        <h3 style="margin-bottom:.6rem;">Topics</h3>
+        <div class="mentor-tags">
+          <span class="m-tag" onclick="sendQuick('Tell me about trust in leadership')">Trust</span>
+          <span class="m-tag" onclick="sendQuick('How to make better decisions under pressure?')">Decisions</span>
+          <span class="m-tag" onclick="sendQuick('How to delegate effectively?')">Delegation</span>
+          <span class="m-tag" onclick="sendQuick('How to motivate a tired team?')">Motivation</span>
+          <span class="m-tag" onclick="sendQuick('How to handle conflict in my team?')">Conflict</span>
+          <span class="m-tag" onclick="sendQuick('How to build a strong team culture?')">Culture</span>
+          <span class="m-tag" onclick="sendQuick('What does it mean to lead by example?')">Role Model</span>
+          <span class="m-tag" onclick="sendQuick('How to stay calm under pressure as a leader?')">Composure</span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-wrap fade-up">
+      <div class="chat-hdr"><div class="chat-dot" id="chatStatus"></div>The Captain — Leadership Mentor</div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="msg msg-bot"><div class="mb"><strong>The Captain</strong>Welcome, rookie! I'm your 24/7 leadership mentor — powered by the principles of cricket's greatest captains. Whether you're dealing with a difficult team member, a tough decision, or just figuring out what leadership even means — I'm here. What's your challenge today?</div></div>
+      </div>
+      <div class="typing-ind" id="typingInd"><div class="mb"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div></div>
+      <div class="chat-input-row">
+        <input class="chat-in" id="chatIn" placeholder="Ask your leadership question..." onkeydown="if(event.key==='Enter')sendMsg()">
+        <button class="chat-send" onclick="sendMsg()">Ask →</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links"><a onclick="goPage('home')">Home</a><a onclick="goPage('order')">Order</a></div>
+    <div class="foot-copy">© 2024 Sanjay Samuel</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: BLOG ════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="blog-hero fade-up">
+    <div class="lbl">Leadership insights</div>
+    <h1>From the <em>Crease.</em></h1>
+    <p>Short reads on leadership, management, and the cricket mindset. New posts every week.</p>
+    <div class="blog-filter">
+      <button class="b-flt active" onclick="filterBlog('all',this)">All Posts</button>
+      <button class="b-flt" onclick="filterBlog('Leadership',this)">Leadership</button>
+      <button class="b-flt" onclick="filterBlog('Team',this)">Team</button>
+      <button class="b-flt" onclick="filterBlog('Mindset',this)">Mindset</button>
+      <button class="b-flt" onclick="filterBlog('Cricket',this)">Cricket</button>
+    </div>
+  </div>
+  <div id="blogList" class="blog-grid" style="margin:0 4rem 5rem;"></div>
+  <div id="blogPost" class="blog-post" style="padding:3rem 4rem;"></div>
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links"><a onclick="goPage('home')">Home</a><a onclick="goPage('order')">Order</a></div>
+    <div class="foot-copy">© 2024 Sanjay Samuel</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: ABOUT ════════════════════ -->
+<div class="page" id="page-about">
+  <div class="about-hero fade-up">
+    <div class="about-text">
+      <div class="lbl">The author</div>
+      <h1>About <em>Sanjay Samuel.</em></h1>
+      <p>Sanjay Samuel is a leadership practitioner, author, and cricket enthusiast who believes the cricket field holds some of the most profound lessons in team leadership the world has ever seen.</p>
+      <p>Having spent years working with first-time managers and watching them struggle with the same challenges — Sanjay wrote <em>Lead Like a Captain</em> to be the guide he wished someone had given him on Day 1.</p>
+      <blockquote>"The captain doesn't just play the game — they read the game. That's the difference between a manager and a leader."</blockquote>
+      <p>The book condenses 27 of cricket's most powerful captaincy moments into actionable leadership lessons — one per chapter, one action per week.</p>
+    </div>
+    <div class="about-img-wrap fade-up">
+      <div class="about-card">
+        <div class="about-avatar">SS</div>
+        <div class="about-name">Sanjay Samuel</div>
+        <div class="about-role">Author · Leadership Practitioner</div>
+        <p style="font-size:.83rem;color:var(--dim);line-height:1.7;margin-top:.8rem;">"Cricket taught me that leadership is not about the title — it's about how you make others play better."</p>
+        <div class="about-social">
+          <a class="soc-btn" href="https://twitter.com/sanjaysamuely" target="_blank">𝕏 Twitter</a>
+          <a class="soc-btn" href="https://wa.me/918309492788" target="_blank">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-facts fade-up">
+    <div class="fact"><div class="fact-n">27</div><div class="fact-l">Chapters Written</div></div>
+    <div class="fact"><div class="fact-n">5</div><div class="fact-l">Core Sections</div></div>
+    <div class="fact"><div class="fact-n">₹149</div><div class="fact-l">Price Point</div></div>
+    <div class="fact"><div class="fact-n">1</div><div class="fact-l">Action Per Chapter</div></div>
+  </div>
+
+  <div class="philosophy fade-up">
+    <div class="lbl">Core beliefs</div>
+    <h2>What Sanjay believes about leadership.</h2>
+    <div class="phil-grid">
+      <div class="phil-item"><div class="phil-num">01</div><div class="phil-title">Leadership is learned, not born</div><div class="phil-text">Great captains weren't born knowing how to read the pitch. They observed, practised, failed, and adapted. So can you.</div></div>
+      <div class="phil-item"><div class="phil-num">02</div><div class="phil-title">Action beats theory every time</div><div class="phil-text">A captain who reads 10 leadership books but never applies anything leads no better than someone who's read none. Do the thing.</div></div>
+      <div class="phil-item"><div class="phil-num">03</div><div class="phil-title">Teams make leaders, not the reverse</div><div class="phil-text">A captain is as good as their eleven. Your job isn't to be the best player — it's to make everyone around you perform better.</div></div>
+      <div class="phil-item"><div class="phil-num">04</div><div class="phil-title">Composure is a superpower</div><div class="phil-text">The best captains are the calmest in the final over. Your team watches how you react when things go wrong. Make it count.</div></div>
+      <div class="phil-item"><div class="phil-num">05</div><div class="phil-title">Context is everything</div><div class="phil-text">No two pitches are the same. No two teams are the same. Good leadership adapts. Great leadership anticipates.</div></div>
+      <div class="phil-item"><div class="phil-num">06</div><div class="phil-title">Legacy beats trophies</div><div class="phil-text">The greatest captains are remembered not for their wins but for how they made their players feel and who they helped become.</div></div>
+    </div>
+  </div>
+
+  <div class="home-cta-band" style="margin:0 4rem 5rem;">
+    <h2>Read the book.</h2>
+    <div class="big-price"><sup>₹</sup>149</div>
+    <p>27 chapters. 27 actions. A leadership handbook for anyone stepping up.</p>
+    <button class="btn-gold" onclick="goPage('order')">💬 Order on WhatsApp</button>
+  </div>
+
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links"><a onclick="goPage('home')">Home</a><a onclick="goPage('order')">Order</a></div>
+    <div class="foot-copy">© 2024 Sanjay Samuel · ISBN 9789374062784</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: ORDER ════════════════════ -->
+<div class="page" id="page-order">
+  <div class="order-wrap">
+    <div class="order-layout">
+      <div class="order-left fade-up">
+        <div class="lbl">Get your copy</div>
+        <h1>Order <em>Your Copy.</em></h1>
+        <div class="order-price-big"><sup>₹</sup>149</div>
+        <p>The handbook every first-time manager needs. Short chapters, real lessons, one action per week — inspired by cricket's greatest captains.</p>
+        <div class="order-perks">
+          <div class="perk"><span class="perk-icon">📦</span>Direct delivery · No middleman</div>
+          <div class="perk"><span class="perk-icon">💬</span>Order &amp; track via WhatsApp</div>
+          <div class="perk"><span class="perk-icon">📖</span>27 chapters · 5 sections · 1 action each</div>
+          <div class="perk"><span class="perk-icon">🔄</span>Satisfaction guaranteed</div>
+          <div class="perk"><span class="perk-icon">🚀</span>Shipped same day (where available)</div>
+        </div>
+        <button class="btn-outline" onclick="goPage('chapters')">Preview Chapters First →</button>
+      </div>
+      <div class="order-box fade-up">
+        <div id="orderFormWrap">
+          <h2>Place Your Order</h2>
+          <div class="order-fields">
+            <div>
+              <div class="o-label">Full Name *</div>
+              <input class="o-input" id="oName" placeholder="Your name" type="text">
+            </div>
+            <div>
+              <div class="o-label">WhatsApp Number *</div>
+              <input class="o-input" id="oPhone" placeholder="10-digit mobile number" type="tel" maxlength="15">
+            </div>
+            <div>
+              <div class="o-label">Delivery City</div>
+              <input class="o-input" id="oCity" placeholder="City, State" type="text">
+            </div>
+            <div>
+              <div class="o-label">Delivery Address</div>
+              <input class="o-input" id="oAddr" placeholder="Street address (optional)" type="text">
+            </div>
+            <div>
+              <div class="o-label">Quantity</div>
+              <div class="qty-row">
+                <button class="qty-btn" onclick="changeQty(-1)">−</button>
+                <span class="qty-val" id="qtyVal">1</span>
+                <button class="qty-btn" onclick="changeQty(1)">+</button>
+                <span style="font-size:.8rem;color:var(--muted);margin-left:.5rem;">books</span>
+              </div>
+            </div>
+            <div>
+              <div class="o-label">Note / Message (optional)</div>
+              <input class="o-input" id="oNote" placeholder="Any special requests?" type="text">
+            </div>
+          </div>
+          <div class="order-summary">
+            <div class="sum-row"><span>Lead Like a Captain (×<span id="sumQty">1</span>)</span><span>₹<span id="sumSub">149</span></span></div>
+            <div class="sum-row"><span>Delivery</span><span>To be confirmed</span></div>
+            <div class="sum-row total"><span>Total</span><span class="sum-total-val">₹<span id="sumTotal">149</span></span></div>
+          </div>
+          <button class="btn-wa" onclick="placeOrder()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Order via WhatsApp
+          </button>
+          <p class="order-note-sm">You'll be redirected to WhatsApp to confirm payment &amp; delivery details.</p>
+        </div>
+        <div class="order-success" id="orderSuccess">
+          <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+          <h3>Opening WhatsApp!</h3>
+          <p>Your order details have been pre-filled. Just hit send in WhatsApp to confirm. We'll get back to you within minutes with payment and delivery details.</p>
+          <button class="btn-gold" style="margin-top:1.5rem;" onclick="resetOrder()">Place Another Order</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials fade-up" style="padding-top:4rem;padding-left:0;padding-right:0;">
+      <div class="lbl">What readers say</div>
+      <h2>From the dressing room.</h2>
+      <div class="testi-grid">
+        <div class="testi"><div class="testi-quote">"I read it in one sitting on a flight. By the time I landed, I had 5 actions written down for the next week. Brilliant little book."</div><div class="testi-name">Rohan Mehta</div><div class="testi-role">Product Manager, Bangalore</div></div>
+        <div class="testi"><div class="testi-quote">"The chapter on 'Bowling Changes' completely changed how I think about delegating. I never expected cricket to teach me that."</div><div class="testi-name">Priya Krishnan</div><div class="testi-role">Team Lead, Chennai</div></div>
+        <div class="testi"><div class="testi-quote">"Worth 100x the price. I've been a manager for 2 years and still found things I didn't know I was doing wrong. The DRS chapter hit hard."</div><div class="testi-name">Vikram Reddy</div><div class="testi-role">Engineering Manager, Hyderabad</div></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="foot-logo">🏏 Lead Like a Captain</div>
+    <div class="foot-links"><a onclick="goPage('home')">Home</a><a onclick="goPage('chapters')">Chapters</a></div>
+    <div class="foot-copy">© 2024 Sanjay Samuel · ISBN 9789374062784</div>
+  </footer>
+</div>
+
+<!-- STICKY -->
+<button class="sticky-wa" onclick="goPage('order')">📖 Order — ₹149</button>
+
+<script>
+/* ── DATA ── */
+const chapters=[
+  {n:1,s:1,name:"Read the Pitch",title:"Read the Pitch First",body:"Before a captain decides anything, they study the pitch. They look at the surface, the cracks, the moisture. Great managers do the same — they read the room, the team's energy, the organisation's culture — before making any move.",action:"This week, before your next team meeting, spend 10 minutes just observing. Watch how people interact. What energy is in the room? What's unspoken?"},
+  {n:2,s:1,name:"Know Your Eleven",title:"Know Your Eleven",body:"A captain who doesn't know their players' strengths and weaknesses can't set the right field. Before you lead, you must understand each person — what drives them, what scares them, what they're secretly brilliant at.",action:"Schedule 15-minute 1-on-1s with each team member this week. Just listen. Ask: 'What kind of work energises you?'"},
+  {n:3,s:1,name:"The Coin Toss",title:"The Coin Toss Decision",body:"Winning the toss is luck. What you do next is leadership. Every new manager has moments where circumstances hand them a choice — field or bat. The best captains have already thought it through before the coin lands.",action:"List 3 upcoming decisions you're procrastinating on. Make each one before the week ends. Done is better than perfect."},
+  {n:4,s:1,name:"Your Batting Average",title:"Know Your Batting Average",body:"The best captains are brutally honest about their own performance. They don't confuse effort with output. Do you know your own leadership batting average? Your team certainly does.",action:"Ask two trusted colleagues: 'What's one thing I could do differently as a leader?' Write down what they say. Sit with it."},
+  {n:5,s:1,name:"The Warm-Up",title:"The Leadership Warm-Up",body:"No cricketer walks onto the field cold. Great captains have pre-match rituals — mental and physical warm-ups that get them into the zone. Leaders need the same intentionality before big moments.",action:"Create a 5-minute pre-meeting ritual. Review your agenda, check your energy, set an intention for how you want to show up."},
+  {n:6,s:1,name:"Captain's Mindset",title:"The Captain's Mindset",body:"Ordinary players think about their own performance. Captains think about the match. The mental shift from 'what do I need to do?' to 'what does the team need from me?' is the core of self-awareness in leadership.",action:"For one full day, before every action, ask: 'Am I doing this for myself or for my team?' Notice the difference."},
+  {n:7,s:2,name:"Pick Your Eleven",title:"Picking the Right Eleven",body:"The best XI on paper rarely wins if the chemistry is wrong. Great captains pick teams for the conditions, the opposition, and the moment — not just for talent. And they make each person feel like they were chosen, not selected.",action:"Look at your current team. Is everyone in the right role for this moment? Who might thrive in a different position?"},
+  {n:8,s:2,name:"Protect the Tail",title:"Protect the Tail",body:"Great captains don't abandon their number 10 and 11. They shield them, set them up to succeed, and make them feel like part of the eleven. In teams, your 'tail' is your quietest, most junior members.",action:"Find the most overlooked person on your team. Assign them a meaningful task this week. Give them visibility."},
+  {n:9,s:2,name:"Build Partnerships",title:"Build Partnerships",body:"Runs don't come from individual brilliance alone — they come from partnerships. The best batting duos communicate constantly, rotate the strike, and protect each other. Great managers build these dynamics deliberately.",action:"Pair two team members who haven't worked closely before on a small project. Watch what happens."},
+  {n:10,s:2,name:"Opening Combo",title:"Your Opening Combination",body:"Your opening batters set the tone for the entire innings. In teams, who are your 'openers' — the people whose attitude and energy shape the team's mood every morning? Invest in them accordingly.",action:"Identify your 2–3 culture-setters. Have a conversation this week about how they're experiencing the team."},
+  {n:11,s:2,name:"Bench Strength",title:"Building Bench Strength",body:"Championships are won by squads, not teams. The captain who invests in their 13th and 14th player finds themselves with options when it matters. Build your bench before you need it.",action:"Identify one person on your bench and give them a stretch assignment this week. Treat it like a trial game."},
+  {n:12,s:2,name:"Team Huddle",title:"The Team Huddle",body:"Before a key over, the captain calls the team in. Not to lecture — to reset, to remind, to energise. The huddle is a ritual of belonging. Great managers use brief, intentional rituals to keep the team connected.",action:"Create a 5-minute weekly team check-in ritual. Keep it human — not just status updates. Start with 'How is everyone doing?'"},
+  {n:13,s:3,name:"Reading Body Language",title:"Reading Body Language",body:"A captain never looks at the scoreboard alone. They read their bowler's shoulders, their fielder's feet, the opposition captain's posture. Communication is mostly not words.",action:"In your next meeting, look up from your screen. Watch people's faces and bodies as much as you listen to their words."},
+  {n:14,s:3,name:"The Press Conference",title:"The Leadership Press Conference",body:"Great captains handle the press with grace — taking responsibility for losses, sharing credit for wins. Every conversation you have as a manager is a press conference. You're always on.",action:"In the next week's setback, use this language: 'I should have...' not 'They should have...' See how it changes the conversation."},
+  {n:15,s:3,name:"Dressing Room Talk",title:"What You Say in the Dressing Room",body:"Some of the most important conversations in cricket happen off-camera — in the dressing room. What you say in private, how you behave behind closed doors, defines your real leadership.",action:"Have one 'dressing room conversation' this week — an honest, private check-in with a team member who's going through something."},
+  {n:16,s:3,name:"The Debrief",title:"The Captain's Debrief",body:"The best teams debrief after every match — not to assign blame, but to extract learning. Great managers create safe spaces for honest post-mortems. 'What did we learn?' is the most powerful question.",action:"After your next project or meeting, run a 15-minute team debrief using three questions: What went well? What didn't? What do we change?"},
+  {n:17,s:3,name:"Celebrate Loudly",title:"Celebrate Loudly",body:"When the fielder takes a screamer at slip, the captain is the first to run over. Public celebration is not optional — it's communication. It tells the team what you value.",action:"Publicly celebrate one team win this week — in a meeting, on a group chat, or via email. Be specific about what was done well."},
+  {n:18,s:3,name:"Senior Players",title:"How to Handle Senior Players",body:"The new captain has to earn the respect of senior players — not demand it. The way you handle your most experienced team members sets your credibility early.",action:"If you have a more experienced team member, ask their advice on something this week. Genuinely. Then act on it."},
+  {n:19,s:4,name:"DRS — Your Gut",title:"DRS — Trusting Your Gut",body:"The Decision Review System requires the captain to back their instinct with their referral. You only get a few. Great leaders know when to trust their gut and when to hold back. Squandering your credibility on small battles leaves you empty-handed for the important ones.",action:"Identify one decision this week where you're second-guessing yourself unnecessarily. Make the call. Own it."},
+  {n:20,s:4,name:"The Third Umpire",title:"Knowing When to Call the Third Umpire",body:"Great captains know when a decision is bigger than them. Asking for help isn't weakness — it's wisdom. The third umpire exists for a reason. So does your mentor.",action:"Identify one problem you've been solving alone that deserves a second opinion. Reach out this week."},
+  {n:21,s:4,name:"Bowling Changes",title:"Making Bowling Changes",body:"Captains who stick with a tired bowler too long lose sessions. Captains who change too early lose momentum. The art is in reading when to change and having the confidence to act on it.",action:"Look at a task or process on your team that isn't working. What would you change if you had to change something today?"},
+  {n:22,s:4,name:"Field Placement",title:"Strategic Field Placement",body:"Every fielder placed with intent is a message — to the batsman, to your bowler, to your team. Great leadership is about intentional positioning of your people where they can have the most impact.",action:"Review your team's responsibilities. Is anyone doing work that doesn't use their best skills? Can you reposition anyone?"},
+  {n:23,s:4,name:"Last Over Calm",title:"Last Over Calm",body:"The final over is when great captains separate from good ones. The ability to stay calm, think clearly, and project confidence when everything is on the line is the ultimate leadership skill.",action:"Identify a high-pressure situation coming up this week. Visualise it going well. Prepare one grounding technique to use in the moment."},
+  {n:24,s:5,name:"The Power Play",title:"Using Your Power Play",body:"The first six overs are for attack. Great captains know exactly when to be aggressive and when to conserve. In leadership, your power plays are your first 90 days, your new projects, your crises — the windows when you can set the tone.",action:"What is your current 'power play' window? What would aggressive, intentional leadership look like this week?"},
+  {n:25,s:5,name:"Playing Away",title:"Leading Away from Home",body:"The toughest test of captaincy is winning away — in hostile conditions, unfamiliar ground. Your team will face 'away games' — new offices, new clients, cultural shifts. How you lead them through it defines you.",action:"Identify an upcoming 'away game' for your team. Brief them well. Show up prepared."},
+  {n:26,s:5,name:"Transfer of Captaincy",title:"The Transfer of Captaincy",body:"The best captains build leaders who can replace them. The sign of great leadership is not that the team can't function without you — it's that the team becomes stronger after you leave.",action:"Identify one person you are actively developing to be a future leader. What are you doing this week to accelerate their growth?"},
+  {n:27,s:5,name:"Legacy Over Trophies",title:"Legacy Over Trophies",body:"Trophies fade. Legacy doesn't. The greatest captains are remembered for who they helped become, the culture they built, the standard they set. What will people say about your leadership in ten years?",action:"Write one paragraph describing the legacy you want to leave as a leader. Put it somewhere you'll see it every day."},
+];
+
+const blogPosts=[
+  {id:1,tag:"Leadership",title:"Dhoni's Last Over Secret — And What It Means For Your Team",excerpt:"MS Dhoni's ability to stay calm in the last over isn't magic. It's a system. Here's how to build it as a manager.",date:"12 Jan 2024",read:"5 min read",
+  body:`<p>When India needed 12 off the last over in the 2011 World Cup final, MS Dhoni walked out to bat at number five. What he did in the next 20 minutes changed Indian cricket — and it can change how you lead your team.</p><h2>It wasn't luck. It was preparation.</h2><p>Dhoni had visualised this scenario hundreds of times. He had practised last-over scenarios in the nets when everyone else had left. His calm wasn't natural — it was manufactured through deliberate preparation.</p><blockquote>"Pressure is not something that happens to you. It's something you allow to happen."</blockquote><p>As a manager, your last over is every high-stakes meeting, every difficult conversation, every moment your team looks to you for direction. The question is: are you prepared?</p><h2>Three things Dhoni does that you can too</h2><p><strong>1. He pre-decides.</strong> Before the last over, Dhoni already knows what he'll do in every scenario. You can do the same before difficult conversations — pre-decide your response to the three most likely outcomes.</p><p><strong>2. He controls his breathing.</strong> The camera often catches Dhoni taking a slow breath before each ball. This is not incidental — it's a technique. Try box breathing (4 counts in, 4 hold, 4 out, 4 hold) before your next high-pressure moment.</p><p><strong>3. He focuses on the process, not the score.</strong> Dhoni is famous for saying he doesn't focus on the target — he focuses on each ball. In leadership, focus on the action in front of you, not the outcome you're worried about.</p><p>The last over always comes. The question is whether you're ready for it.</p>`},
+  {id:2,tag:"Team",title:"Why Great Captains Never Bat Alone — The Partnership Principle",excerpt:"Cricket taught us that runs come from partnerships. Here's how to build them deliberately in your team.",date:"5 Feb 2024",read:"4 min read",
+  body:`<p>In 2002, Rahul Dravid and V.V.S. Laxman batted for nearly two days in a partnership that saved India from certain defeat against Australia. They didn't succeed individually. They succeeded together — communicating, supporting, rotating the strike.</p><h2>The partnership principle</h2><p>In cricket, a partnership is more than two batters at the crease. It's an active, dynamic relationship — calling runs, encouraging each other, protecting each other from difficult balls. Great managers build these same dynamics deliberately in their teams.</p><blockquote>"Your best performers rarely succeed alone. Look for the partnerships that multiply them."</blockquote><h2>How to build partnerships in your team</h2><p>Start by looking at who on your team has never worked closely together. Often, the best partnerships are between people with complementary strengths — the strategic thinker paired with the execution machine, the creative paired with the analyst.</p><p>As a manager, your job is to create the conditions where partnerships can form — joint ownership of projects, shared credit, and the space to build trust through working together.</p><p>The partnership principle is simple: two players who trust each other can achieve more than two individual stars who don't. Your job is to be the captain who makes that trust possible.</p>`},
+  {id:3,tag:"Mindset",title:"The Dropped Catch — How Great Leaders Handle Team Mistakes",excerpt:"Every team drops catches. The captain's response in that moment defines the culture.",date:"22 Feb 2024",read:"4 min read",
+  body:`<p>It was the 2003 World Cup. Steve Waugh had set the field perfectly. And then the catch was dropped. Instead of turning away in frustration — which every camera in the ground was waiting for — Waugh walked over to the fielder and put his arm around them.</p><h2>What that moment teaches every manager</h2><p>Your team is watching how you respond to their mistakes more than almost anything else you do. The moment someone drops the catch is the moment your culture is actually made.</p><blockquote>"The culture of a team is defined in its worst moments, not its best."</blockquote><p>A captain who reacts with frustration creates a team that is afraid to take risks. A captain who responds with grace creates a team that is willing to dive for the ball.</p><h2>The three-step response</h2><p><strong>Acknowledge:</strong> Don't pretend it didn't happen. A quick nod or word that says "I saw it, it's okay" is enough in the moment.</p><p><strong>Refocus:</strong> Redirect the team's attention to the next ball. Dwelling creates more mistakes. The best captains move forward quickly.</p><p><strong>Debrief privately:</strong> After the match, have a brief, private conversation. Not to rehash the mistake, but to ask: what would you do differently? This shows you respect the person enough to help them grow.</p><p>Every team drops catches. The captain who handles it right builds a team that keeps diving.</p>`},
+  {id:4,tag:"Cricket",title:"What Ganguly's Shirt Swing Teaches Us About Bold Leadership",excerpt:"Sourav Ganguly's iconic Lord's celebration wasn't reckless — it was deliberate. Here's the leadership lesson inside it.",date:"10 Mar 2024",read:"3 min read",
+  body:`<p>In 2002, after India's NatWest Series triumph at Lord's, Sourav Ganguly climbed to the pavilion balcony and swung his shirt above his head. It was audacious. It was bold. And it was entirely deliberate.</p><h2>Bold leadership is not recklessness</h2><p>Ganguly was one of the most tactical captains India ever had. But he understood something that many managers don't: your team needs to see you be bold. Not reckless — bold. There's a difference.</p><blockquote>"Boldness is calculated courage. It says: I've assessed the situation, and I choose to act anyway."</blockquote><h2>When to be Ganguly</h2><p>Great leaders are bold when the team needs a lift. Ganguly's shirt moment wasn't about ego — it was about sending a message to a young Indian team that it was okay to celebrate, to be confident, to show the world you belonged.</p><p>Ask yourself: when did you last do something bold as a leader? Not irresponsible — bold. Made a decision with conviction. Celebrated loudly. Backed a team member publicly when it was risky to do so.</p><p>The shirt-swing moment didn't win India the series. India winning the series made the shirt-swing possible. Build the wins first. Then celebrate them with everything you have.</p>`},
+  {id:5,tag:"Leadership",title:"Series Thinking — Why the Best Managers Play Long Games",excerpt:"Good captains win matches. Great captains win series. The difference is how they think.",date:"28 Mar 2024",read:"5 min read",
+  body:`<p>In 2004, Rahul Dravid was given the India captaincy for a tour of Pakistan. India hadn't won there in decades. Instead of chasing a single dramatic victory, Dravid played the series long — building combinations, rotating bowlers carefully, reading each match as part of a larger story.</p><h2>The series mindset</h2><p>Most managers are match-thinkers. They optimise for the immediate outcome — the next deadline, the next review, the next quarter. Series-thinkers optimise for the arc — the six months, the year, the career.</p><blockquote>"Match thinking wins matches. Series thinking wins careers."</blockquote><p>The difference shows up in small decisions. A match-thinker burns out their best performers to hit this quarter's numbers. A series-thinker gives their best performers recovery time because they know the real test is six months away.</p><h2>How to shift to series thinking</h2><p>Start by identifying your current series. What is the 12-month challenge your team is in the middle of? What does winning this series look like — not just the next match?</p><p>Then ask: what decisions am I making this week that are helping the match at the cost of the series? Sometimes losing a match to win the series is the smartest move a captain can make.</p><p>The best leaders play long. Build your team for the series, not just the next match.</p>`},
+  {id:6,tag:"Mindset",title:"Reading the Pitch — The First Skill Every New Manager Needs",excerpt:"Before you lead, you need to understand your environment. Here's how the captain's pitch assessment translates to management.",date:"15 Apr 2024",read:"4 min read",
+  body:`<p>Before every match, the captain and key players walk out to the pitch. They crouch down and feel the surface. They look at the cracks, check the moisture, assess which end will take spin and which will offer pace. None of this is intuitive — it's a skill developed over years of deliberate observation.</p><h2>Your pitch is your context</h2><p>As a new manager, you have a pitch too. It's your team, your organisation, your industry, your culture. Reading it well before you make any significant moves is the most underrated first-week skill.</p><blockquote>"The captain who reads the pitch wrong sets the wrong field. The manager who reads the room wrong makes the wrong moves."</blockquote><h2>Three things to read in your first 30 days</h2><p><strong>The team's energy:</strong> Is this a team that's exhausted? Frustrated? Motivated? Afraid? You can't lead effectively without knowing this. Ask. Listen. Observe.</p><p><strong>The informal power structures:</strong> Every team has a formal org chart and an informal one. Who do people actually listen to? Who sets the social tone? Knowing this is as important as reading the org chart.</p><p><strong>The unsaid things:</strong> What topics make people go quiet? What are people afraid to say directly? The unspoken things are often the most important things. Find ways to make them safe to say.</p><p>Read the pitch. Then set your field. In that order.</p>`},
+];
+
+const quizData=[
+  {q:"How long have you been in a leadership or management role?",opts:["I just got promoted","Less than 1 year","1–3 years","More than 3 years"]},
+  {q:"What's your biggest leadership challenge right now?",opts:["Earning my team's trust","Making good decisions under pressure","Communicating clearly","Developing my team members"]},
+  {q:"How do you feel about your current leadership approach?",opts:["I have no idea what I'm doing","I have the basics but want more","Fairly confident, always improving","Very confident"]},
+  {q:"Are you a cricket fan?",opts:["Die-hard fan 🏏","Casual fan","Not really","Not at all"]},
+];
+
+/* ── ROUTING ── */
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-a').forEach(a=>a.classList.toggle('active',a.dataset.p===id));
+  window.scrollTo(0,0);
+  initPage(id);
+  trigFadeUp();
+}
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');}
+
+function initPage(id){
+  if(id==='chapters') buildChGrid('all');
+  if(id==='blog') buildBlog('all');
+  if(id==='foryou') initQuiz();
+}
+
+/* ── FADE-UP ── */
+function trigFadeUp(){
+  setTimeout(()=>{
+    document.querySelectorAll('.page.active .fade-up').forEach(el=>el.classList.add('vis'));
+  },80);
+}
+
+/* ── CHAPTERS ── */
+let activeCh=null;
+function buildChGrid(sec){
+  const g=document.getElementById('chGrid');
+  const filtered=sec==='all'?chapters:chapters.filter(c=>c.s===parseInt(sec));
+  g.innerHTML=filtered.map(c=>`
+    <div class="ch-cell ${activeCh===c.n?'ch-active':''}" onclick="showChDetail(${c.n})" data-s="${c.s}">
+      <span class="ch-num">${String(c.n).padStart(2,'0')}</span>
+      <div class="ch-name">${c.name}</div>
+    </div>`).join('');
+}
+function filterSec(sec,btn){
+  document.querySelectorAll('.s-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  activeCh=null;
+  document.getElementById('chDetail').classList.remove('show');
+  buildChGrid(sec);
+}
+function showChDetail(n){
+  const c=chapters.find(x=>x.n===n);
+  activeCh=n;
+  const d=document.getElementById('chDetail');
+  d.innerHTML=`
+    <div class="ch-det-num">Chapter ${String(c.n).padStart(2,'0')} · Section ${['','Self Awareness','Team Building','Communication','Decision Making','Leading to Win'][c.s]}</div>
+    <div class="ch-det-title">${c.title}</div>
+    <div class="ch-det-body">${c.body}</div>
+    <div class="ch-det-action">
+      <div><strong>This Week's Action</strong><p>${c.action}</p></div>
+    </div>
+    <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap;">
+      <button class="btn-gold" style="padding:.55rem 1.2rem;font-size:.8rem;" onclick="goPage('order')">Order to Read All 27 → ₹149</button>
+    </div>`;
+  d.classList.add('show');
+  buildChGrid(document.querySelector('.s-tab.active')?.dataset?.s??'all');
+  document.querySelectorAll('.ch-cell').forEach(el=>{
+    el.classList.toggle('ch-active',parseInt(el.querySelector('.ch-num').textContent)===n);
+  });
+  setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+/* ── BLOG ── */
+function buildBlog(cat){
+  const list=document.getElementById('blogList');
+  const post=document.getElementById('blogPost');
+  post.classList.remove('show');post.innerHTML='';
+  list.style.display='grid';
+  const posts=cat==='all'?blogPosts:blogPosts.filter(p=>p.tag===cat);
+  list.innerHTML=posts.map(p=>`
+    <div class="blog-card" onclick="openPost(${p.id})">
+      <div class="blog-tag">${p.tag}</div>
+      <div class="blog-title">${p.title}</div>
+      <div class="blog-excerpt">${p.excerpt}</div>
+      <div class="blog-meta"><span>${p.date} · ${p.read}</span><span class="blog-read">Read →</span></div>
+    </div>`).join('');
+}
+function filterBlog(cat,btn){
+  document.querySelectorAll('.b-flt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  buildBlog(cat);
+}
+function openPost(id){
+  const p=blogPosts.find(x=>x.id===id);
+  const list=document.getElementById('blogList');
+  const post=document.getElementById('blogPost');
+  list.style.display='none';
+  post.innerHTML=`
+    <button class="blog-post-back" onclick="buildBlog('all');document.getElementById('blogList').style.display='grid';document.getElementById('blogPost').classList.remove('show');document.getElementById('blogPost').innerHTML='';">← Back to Blog</button>
+    <div class="blog-tag">${p.tag}</div>
+    <h1>${p.title}</h1>
+    <div class="blog-post-meta">${p.date} · ${p.read} · By Sanjay Samuel</div>
+    <div class="blog-post-body">${p.body}</div>
+    <div style="margin-top:2.5rem;padding:1.5rem;border:1px solid var(--border);background:rgba(26,77,46,.08);">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:.5rem;">Enjoyed this? Read all 27 chapters.</div>
+      <p style="font-size:.85rem;color:var(--dim);margin-bottom:1rem;">The book has 27 chapters like this — each with a concrete action for your week. Only ₹149.</p>
+      <button class="btn-gold" onclick="goPage('order')">Order Your Copy — ₹149</button>
+    </div>`;
+  post.classList.add('show');
+  window.scrollTo(0,0);
+}
+
+/* ── QUIZ ── */
+let qIdx=0,qAns=[];
+function initQuiz(){qIdx=0;qAns=[];renderQ();}
+function renderQ(){
+  const q=quizData[qIdx];
+  document.getElementById('quizQtext').textContent=q.q;
+  document.getElementById('quizOpts').innerHTML=q.opts.map((o,i)=>`<button class="quiz-opt" onclick="selectQ(${i},this)">${o}</button>`).join('');
+  document.getElementById('quizProg').textContent=`Question ${qIdx+1} of ${quizData.length}`;
+  document.getElementById('quizResult').classList.remove('show');
+}
+function selectQ(i,btn){
+  document.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');qAns[qIdx]=i;
+}
+function nextQ(){
+  if(qAns[qIdx]===undefined){alert('Please pick an answer!');return;}
+  if(qIdx<quizData.length-1){qIdx++;renderQ();}
+  else{showResult();}
+}
+function showResult(){
+  const titles=["🏆 This Book Was Written For You","✅ This Book Will Accelerate You","🎯 This Book Will Challenge You Well","🔄 This Book Might Surprise You"];
+  const texts=["You're at the exact moment this book was designed for. Lead Like a Captain will give you a clear framework, concrete actions, and the confidence to step into your new role. Order it today.",
+    "You're past the panic phase — now it's time to level up. Lead Like a Captain will give you frameworks you've probably been figuring out by trial and error. Save yourself the time.",
+    "You've been managing a while, and this book will still challenge you. The cricket lens often reveals blind spots even experienced leaders don't know they have.",
+    "You might be wondering if cricket really has anything to do with management. By Chapter 3, you'll be a believer. The parallels are uncanny — and the actions are immediately useful."];
+  const score=qAns[0]<=1?0:qAns[2]<=1?1:qAns[2]<=2?2:3;
+  document.getElementById('quizResultTitle').textContent=titles[score];
+  document.getElementById('quizResultText').textContent=texts[score];
+  document.getElementById('quizQ').style.display='none';
+  document.getElementById('quizResult').classList.add('show');
+}
+
+/* ── MENTOR CHAT ── */
+const mentorResponses=[
+  r=>`A captain who isn't being listened to usually has one of three problems: they haven't established credibility yet, they're communicating in a way that doesn't land with this team, or there's a trust deficit they haven't addressed yet. Tell me more — is this the whole team, or specific people? In cricket, every captain earns their authority in the first few matches. What's your early innings looking like?`,
+  r=>`Star performers who are difficult are usually one of three things: bored, undervalued, or watching you to see if you're worth following. The worst thing you can do is manage them the same as everyone else. In cricket, you don't ask your best pacer to bowl medium pace just to be "fair." Give them the ball at the right moment, tell them you know they're your match-winner, and let them perform. What's this person's primary frustration right now?`,
+  r=>`That overwhelmed feeling? Good. It means you understand the weight of what you've been given. Every great captain felt it. Dhoni said in his early captaincy he often didn't know if he was making the right call — he just made the call and committed fully. Here's your first action: don't try to solve everything this week. Pick ONE thing to get right. What's the single most important thing your team needs from you right now?`,
+  r=>`Tough feedback is like bowling a bouncer — done wrong, it's dangerous; done right, it gets a wicket. The key is the relationship before the delivery. Before you give hard feedback, make sure the person knows you're on their side. Start with: "I'm telling you this because I want you to succeed." Then be specific, not general. "Your last report was unclear" lands better than "you need to communicate better." What's the specific feedback you need to give?`,
+  r=>`After a failure, a team needs two things from their captain: they need to see that you still believe in them, and they need a clear path forward. Don't skip the first one to rush to the second. Gather the team, acknowledge the loss honestly, then say: "Here's what I believe about this team, and here's what we do next." In cricket, the dressing room after a bad day defines how the team plays the next morning.`,
+  r=>`Great question. The answer lies in partnership — not individual brilliance. Think of your best batting duo. They communicate constantly, they protect each other, they rotate the strike. Map your team: who are the natural partners? Who amplifies who? Your job is to build those partnerships deliberately, not wait for them to happen accidentally.`,
+  r=>`Trust is built in the small moments, not the big speeches. Every time you do what you say you'll do, trust goes up. Every time you take credit for the team's win, it goes down. Every time you take responsibility for the team's loss publicly, it goes way up. This week: find one small commitment you can make and over-deliver on it. Compound trust like interest.`,
+  r=>`Delegation is the hardest skill for new managers because it requires giving up control before you've established enough trust to feel safe doing so. Start small: delegate one task this week that you're currently doing yourself. Give the what and the why — not the how. Then stay available for questions without taking the task back. That last part is the hardest.`,
+  r=>`A tired team usually needs one of three things: recognition, rest, or a renewed sense of purpose. Before you try motivation techniques, diagnose which one it is. If they haven't been recognised, recognise them. If they're overloaded, protect them from more. If they've forgotten why the work matters, reconnect them to it. What do you think it is for your team?`,
+  r=>`Team conflict, managed well, is a sign of psychological safety — people feel safe enough to disagree. The captain's job isn't to eliminate conflict; it's to make sure it stays constructive. Two rules: disagree in private, commit publicly. And never let personal conflict affect team performance on the pitch. What kind of conflict are you dealing with?`,
+];
+let mentorIdx=0;
+function sendMsg(){
+  const inp=document.getElementById('chatIn');
+  const val=inp.value.trim();
+  if(!val)return;
+  appendMsg(val,'user');
+  inp.value='';
+  showTyping();
+  setTimeout(()=>{
+    hideTyping();
+    const resp=mentorResponses[mentorIdx%mentorResponses.length](val);
+    mentorIdx++;
+    appendMsg(resp,'bot');
+  },1200+Math.random()*800);
+}
+function sendQuick(q){
+  if(document.getElementById('page-mentor').classList.contains('active')){
+    document.getElementById('chatIn').value=q;
+    sendMsg();
+  } else {
+    goPage('mentor');
+    setTimeout(()=>{document.getElementById('chatIn').value=q;sendMsg();},400);
+  }
+}
+function appendMsg(text,who){
+  const msgs=document.getElementById('chatMsgs');
+  const div=document.createElement('div');
+  div.className=`msg msg-${who==='bot'?'bot':'user'}`;
+  div.innerHTML=who==='bot'?`<div class="mb"><strong>The Captain</strong>${text}</div>`:`<div class="mu">${text}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function showTyping(){
+  const t=document.getElementById('typingInd');
+  const msgs=document.getElementById('chatMsgs');
+  t.classList.add('show');
+  msgs.appendChild(t);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function hideTyping(){document.getElementById('typingInd').classList.remove('show');}
+
+/* ── ORDER ── */
+let qty=1;
+function changeQty(d){
+  qty=Math.max(1,Math.min(10,qty+d));
+  document.getElementById('qtyVal').textContent=qty;
+  document.getElementById('sumQty').textContent=qty;
+  document.getElementById('sumSub').textContent=149*qty;
+  document.getElementById('sumTotal').textContent=149*qty;
+}
+function placeOrder(){
+  const name=document.getElementById('oName').value.trim();
+  const phone=document.getElementById('oPhone').value.trim();
+  const city=document.getElementById('oCity').value.trim();
+  const addr=document.getElementById('oAddr').value.trim();
+  const note=document.getElementById('oNote').value.trim();
+  if(!name){alert('Please enter your name.');document.getElementById('oName').focus();return;}
+  if(!phone||phone.replace(/\D/g,'').length<10){alert('Please enter a valid WhatsApp number.');document.getElementById('oPhone').focus();return;}
+  const lines=[
+    `Hi! I'd like to order 'Lead Like a Captain'.`,``,
+    `Name: ${name}`,
+    `Qty: ${qty} book${qty>1?'s':''} (₹${149*qty} + delivery)`,
+    city?`City: ${city}`:'',
+    addr?`Address: ${addr}`:'',
+    note?`Note: ${note}`:'',
+    ``,`Please share payment and delivery details. Thank you!`
+  ].filter(l=>l!=='').join('\n');
+  const url=`https://wa.me/918309492788?text=${encodeURIComponent(lines)}`;
+  document.getElementById('orderSuccess').classList.add('show');
+  document.getElementById('orderFormWrap').style.opacity='.2';
+  document.getElementById('orderFormWrap').style.pointerEvents='none';
+  setTimeout(()=>window.open(url,'_blank'),600);
+}
+function resetOrder(){
+  document.getElementById('orderSuccess').classList.remove('show');
+  document.getElementById('orderFormWrap').style.opacity='1';
+  document.getElementById('orderFormWrap').style.pointerEvents='auto';
+  ['oName','oPhone','oCity','oAddr','oNote'].forEach(id=>document.getElementById(id).value='');
+  qty=1;changeQty(0);
+}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  trigFadeUp();
+  buildBlog('all');
+  initQuiz();
+});
+</script>
+</body>
+</html>
